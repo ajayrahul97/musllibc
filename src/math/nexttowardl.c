@@ -1,6 +1,6 @@
 #include <math.h>
 
-long double nexttowardl(long double x, long double y)
+double nexttowardl(double x, double y)
 {
 	return nextafterl(x, y);
 }

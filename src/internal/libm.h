@@ -22,7 +22,7 @@
 #if LDBL_MANT_DIG == 53 && LDBL_MAX_EXP == 1024
 #elif LDBL_MANT_DIG == 64 && LDBL_MAX_EXP == 16384 && __BYTE_ORDER == __LITTLE_ENDIAN
 union ldshape {
-	long double f;
+	double f;
 	struct {
 		uint64_t m;
 		uint16_t se;
@@ -30,7 +30,7 @@ union ldshape {
 };
 #elif LDBL_MANT_DIG == 113 && LDBL_MAX_EXP == 16384 && __BYTE_ORDER == __LITTLE_ENDIAN
 union ldshape {
-	long double f;
+	double f;
 	struct {
 		uint64_t lo;
 		uint32_t mid;
@@ -44,7 +44,7 @@ union ldshape {
 };
 #elif LDBL_MANT_DIG == 113 && LDBL_MAX_EXP == 16384 && __BYTE_ORDER == __BIG_ENDIAN
 union ldshape {
-	long double f;
+	double f;
 	struct {
 		uint16_t se;
 		uint16_t top;
@@ -57,7 +57,7 @@ union ldshape {
 	} i2;
 };
 #else
-#error Unsupported long double representation
+#error Unsupported double representation
 #endif
 
 #define FORCE_EVAL(x) do {                        \
@@ -68,7 +68,7 @@ union ldshape {
 		volatile double __x;              \
 		__x = (x);                        \
 	} else {                                  \
-		volatile long double __x;         \
+		volatile double __x;         \
 		__x = (x);                        \
 	}                                         \
 } while(0)
@@ -152,7 +152,7 @@ do {                                              \
 
 #define CMPLX(x, y) __CMPLX(x, y, double)
 #define CMPLXF(x, y) __CMPLX(x, y, float)
-#define CMPLXL(x, y) __CMPLX(x, y, long double)
+#define CMPLXL(x, y) __CMPLX(x, y, double)
 
 /* fdlibm kernel functions */
 
@@ -172,13 +172,13 @@ float  __tandf(double,int);
 float  __expo2f(float);
 float complex __ldexp_cexpf(float complex,int);
 
-int __rem_pio2l(long double, long double *);
-long double __sinl(long double, long double, int);
-long double __cosl(long double, long double);
-long double __tanl(long double, long double, int);
+int __rem_pio2l(double, double *);
+double __sinl(double, double, int);
+double __cosl(double, double);
+double __tanl(double, double, int);
 
 /* polynomial evaluation */
-long double __polevll(long double, const long double *, int);
-long double __p1evll(long double, const long double *, int);
+double __polevll(double, const double *, int);
+double __p1evll(double, const double *, int);
 
 #endif

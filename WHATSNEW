@@ -439,7 +439,7 @@ bug fixes:
 
 new features:
 - c++ support with g++'s libstdc++
-- c99 math library (float, long double, complex, etc.)
+- c99 math library (float, double, complex, etc.)
 - numerous wchar_t functions
 - a64l, l64a functions
 - getdate function
@@ -464,7 +464,7 @@ bug fixes:
 new feature:
 - major math correctness and performance improvements
 - many math functions implemented in asm for i386
-- some math functions (mostly long double) in asm for x86_64
+- some math functions (mostly double) in asm for x86_64
 - new floating point parser/converter with correct rounding
 - implement wcstod, wcstof, and wcstold
 - new scanf implementation - cleaner, faster, more correct
@@ -995,7 +995,7 @@ bugs fixed:
 
 arch-specific bugs:
 - wrong SIG_ATOMIC_MIN/MAX macros on x86_64
-- erfcl was missing on archs where long double is same as double
+- erfcl was missing on archs where double is same as double
 - broken dynamic-model TLS in static-linked arm/mips/powerpc programs
 
 

@@ -18,7 +18,7 @@ TYPEDEF int wchar_t;
 TYPEDEF float float_t;
 TYPEDEF double double_t;
 
-TYPEDEF struct { long long __ll; long double __ld; } max_align_t;
+TYPEDEF struct { long long __ll; double __ld; } max_align_t;
 
 #if __riscv_xlen == 32
 TYPEDEF long long time_t;

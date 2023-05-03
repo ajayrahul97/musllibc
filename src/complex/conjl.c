@@ -1,6 +1,6 @@
 #include "libm.h"
 
-long double complex conjl(long double complex z)
+double complex conjl(double complex z)
 {
 	return CMPLXL(creall(z), -cimagl(z));
 }

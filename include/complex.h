@@ -15,91 +15,91 @@ extern "C" {
 
 double complex cacos(double complex);
 float complex cacosf(float complex);
-long double complex cacosl(long double complex);
+double complex cacosl(double complex);
 
 double complex casin(double complex);
 float complex casinf(float complex);
-long double complex casinl(long double complex);
+double complex casinl(double complex);
 
 double complex catan(double complex);
 float complex catanf(float complex);
-long double complex catanl(long double complex);
+double complex catanl(double complex);
 
 double complex ccos(double complex);
 float complex ccosf(float complex);
-long double complex ccosl(long double complex);
+double complex ccosl(double complex);
 
 double complex csin(double complex);
 float complex csinf(float complex);
-long double complex csinl(long double complex);
+double complex csinl(double complex);
 
 double complex ctan(double complex);
 float complex ctanf(float complex);
-long double complex ctanl(long double complex);
+double complex ctanl(double complex);
 
 double complex cacosh(double complex);
 float complex cacoshf(float complex);
-long double complex cacoshl(long double complex);
+double complex cacoshl(double complex);
 
 double complex casinh(double complex);
 float complex casinhf(float complex);
-long double complex casinhl(long double complex);
+double complex casinhl(double complex);
 
 double complex catanh(double complex);
 float complex catanhf(float complex);
-long double complex catanhl(long double complex);
+double complex catanhl(double complex);
 
 double complex ccosh(double complex);
 float complex ccoshf(float complex);
-long double complex ccoshl(long double complex);
+double complex ccoshl(double complex);
 
 double complex csinh(double complex);
 float complex csinhf(float complex);
-long double complex csinhl(long double complex);
+double complex csinhl(double complex);
 
 double complex ctanh(double complex);
 float complex ctanhf(float complex);
-long double complex ctanhl(long double complex);
+double complex ctanhl(double complex);
 
 double complex cexp(double complex);
 float complex cexpf(float complex);
-long double complex cexpl(long double complex);
+double complex cexpl(double complex);
 
 double complex clog(double complex);
 float complex clogf(float complex);
-long double complex clogl(long double complex);
+double complex clogl(double complex);
 
 double cabs(double complex);
 float cabsf(float complex);
-long double cabsl(long double complex);
+double cabsl(double complex);
 
 double complex cpow(double complex, double complex);
 float complex cpowf(float complex, float complex);
-long double complex cpowl(long double complex, long double complex);
+double complex cpowl(double complex, double complex);
 
 double complex csqrt(double complex);
 float complex csqrtf(float complex);
-long double complex csqrtl(long double complex);
+double complex csqrtl(double complex);
 
 double carg(double complex);
 float cargf(float complex);
-long double cargl(long double complex);
+double cargl(double complex);
 
 double cimag(double complex);
 float cimagf(float complex);
-long double cimagl(long double complex);
+double cimagl(double complex);
 
 double complex conj(double complex);
 float complex conjf(float complex);
-long double complex conjl(long double complex);
+double complex conjl(double complex);
 
 double complex cproj(double complex);
 float complex cprojf(float complex);
-long double complex cprojl(long double complex);
+double complex cprojl(double complex);
 
 double creal(double complex);
 float crealf(float complex);
-long double creall(long double complex);
+double creall(double complex);
 
 #ifndef __cplusplus
 #define __CIMAG(x, t) \
@@ -107,11 +107,11 @@ long double creall(long double complex);
 
 #define creal(x) ((double)(x))
 #define crealf(x) ((float)(x))
-#define creall(x) ((long double)(x))
+#define creall(x) ((double)(x))
 
 #define cimag(x) __CIMAG(x, double)
 #define cimagf(x) __CIMAG(x, float)
-#define cimagl(x) __CIMAG(x, long double)
+#define cimagl(x) __CIMAG(x, double)
 #endif
 
 #if __STDC_VERSION__ >= 201112L
@@ -124,7 +124,7 @@ long double creall(long double complex);
 #endif
 #define CMPLX(x, y) __CMPLX(x, y, double)
 #define CMPLXF(x, y) __CMPLX(x, y, float)
-#define CMPLXL(x, y) __CMPLX(x, y, long double)
+#define CMPLXL(x, y) __CMPLX(x, y, double)
 #endif
 
 #ifdef __cplusplus

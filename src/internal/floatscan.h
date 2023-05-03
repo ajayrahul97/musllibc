@@ -3,6 +3,6 @@
 
 #include <stdio.h>
 
-long double __floatscan(FILE *, int, int);
+double __floatscan(FILE *, int, int);
 
 #endif

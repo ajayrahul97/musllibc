@@ -12,23 +12,23 @@
  */
 /*
  * See comments in atan2.c.
- * Converted to long double by David Schultz <das@FreeBSD.ORG>.
+ * Converted to double by David Schultz <das@FreeBSD.ORG>.
  */
 
 #include "libm.h"
 
 #if LDBL_MANT_DIG == 53 && LDBL_MAX_EXP == 1024
-long double atan2l(long double y, long double x)
+double atan2l(double y, double x)
 {
 	return atan2(y, x);
 }
 #elif (LDBL_MANT_DIG == 64 || LDBL_MANT_DIG == 113) && LDBL_MAX_EXP == 16384
 #include "__invtrigl.h"
 
-long double atan2l(long double y, long double x)
+double atan2l(double y, double x)
 {
 	union ldshape ux, uy;
-	long double z;
+	double z;
 	int m, ex, ey;
 
 	if (isnan(x) || isnan(y))

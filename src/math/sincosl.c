@@ -2,7 +2,7 @@
 #include "libm.h"
 
 #if LDBL_MANT_DIG == 53 && LDBL_MAX_EXP == 1024
-void sincosl(long double x, long double *sin, long double *cos)
+void sincosl(double x, double *sin, double *cos)
 {
 	double sind, cosd;
 	sincos(x, &sind, &cosd);
@@ -10,11 +10,11 @@ void sincosl(long double x, long double *sin, long double *cos)
 	*cos = cosd;
 }
 #elif (LDBL_MANT_DIG == 64 || LDBL_MANT_DIG == 113) && LDBL_MAX_EXP == 16384
-void sincosl(long double x, long double *sin, long double *cos)
+void sincosl(double x, double *sin, double *cos)
 {
 	union ldshape u = {x};
 	unsigned n;
-	long double y[2], s, c;
+	double y[2], s, c;
 
 	u.i.se &= 0x7fff;
 	if (u.i.se == 0x7fff) {

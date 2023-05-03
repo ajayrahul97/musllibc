@@ -11,7 +11,7 @@ typedef unsigned long greg_t;
 typedef unsigned long gregset_t[34];
 
 typedef struct {
-	long double vregs[32];
+	double vregs[32];
 	unsigned int fpsr;
 	unsigned int fpcr;
 } fpregset_t;
@@ -19,7 +19,7 @@ typedef struct sigcontext {
 	unsigned long fault_address;
 	unsigned long regs[31];
 	unsigned long sp, pc, pstate;
-	long double __reserved[256];
+	double __reserved[256];
 } mcontext_t;
 
 #define FPSIMD_MAGIC 0x46508001
@@ -32,7 +32,7 @@ struct fpsimd_context {
 	struct _aarch64_ctx head;
 	unsigned int fpsr;
 	unsigned int fpcr;
-	long double vregs[32];
+	double vregs[32];
 };
 struct esr_context {
 	struct _aarch64_ctx head;
@@ -40,7 +40,7 @@ struct esr_context {
 };
 #else
 typedef struct {
-	long double __regs[18+256];
+	double __regs[18+256];
 } mcontext_t;
 #endif
 

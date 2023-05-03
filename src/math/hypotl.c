@@ -1,7 +1,7 @@
 #include "libm.h"
 
 #if LDBL_MANT_DIG == 53 && LDBL_MAX_EXP == 1024
-long double hypotl(long double x, long double y)
+double hypotl(double x, double y)
 {
 	return hypot(x, y);
 }
@@ -12,9 +12,9 @@ long double hypotl(long double x, long double y)
 #define SPLIT (0x1p57L+1)
 #endif
 
-static void sq(long double *hi, long double *lo, long double x)
+static void sq(double *hi, double *lo, double x)
 {
-	long double xh, xl, xc;
+	double xh, xl, xc;
 	xc = x*SPLIT;
 	xh = x - xc + xc;
 	xl = x - xh;
@@ -22,11 +22,11 @@ static void sq(long double *hi, long double *lo, long double x)
 	*lo = xh*xh - *hi + 2*xh*xl + xl*xl;
 }
 
-long double hypotl(long double x, long double y)
+double hypotl(double x, double y)
 {
 	union ldshape ux = {x}, uy = {y};
 	int ex, ey;
-	long double hx, lx, hy, ly, z;
+	double hx, lx, hy, ly, z;
 
 	ux.i.se &= 0x7fff;
 	uy.i.se &= 0x7fff;

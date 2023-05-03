@@ -1,7 +1,7 @@
 #include "libm.h"
 
 //FIXME
-long double complex csqrtl(long double complex z)
+double complex csqrtl(double complex z)
 {
 	return csqrt(z);
 }

@@ -594,6 +594,8 @@ tryldflag LDFLAGS_AUTO -Wl,--exclude-libs=ALL
 # a linking optimization.
 tryldflag LDFLAGS_AUTO -Wl,-Bsymbolic-functions
 
+tryldflag LDFLAGS_AUTO -Wl,-lquadmath
+
 # Find compiler runtime library
 test -z "$LIBCC" && tryldflag LIBCC -lgcc && tryldflag LIBCC -lgcc_eh
 test -z "$LIBCC" && tryldflag LIBCC -lcompiler_rt
@@ -696,17 +698,17 @@ arm) ASMSUBARCH=el ;;
 esac
 
 #
-# Some archs (powerpc) have different possible long double formats
+# Some archs (powerpc) have different possible double formats
 # that the compiler can be configured for. The logic for whether this
 # is supported is in bits/float.h; in general, it is not. We need to
 # check for mismatches here or code in printf, strotd, and scanf will
 # be dangerously incorrect because it depends on (1) the macros being
 # correct, and (2) IEEE semantics.
 #
-printf "checking whether compiler's long double definition matches float.h... "
+printf "checking whether compiler's double definition matches float.h... "
 echo '#include <float.h>' > "$tmpc"
 echo '#if LDBL_MANT_DIG == 53' >> "$tmpc"
-echo 'typedef char ldcheck[9-(int)sizeof(long double)];' >> "$tmpc"
+echo 'typedef char ldcheck[9-(int)sizeof(double)];' >> "$tmpc"
 echo '#endif' >> "$tmpc"
 if $CC $CFLAGS_C99FSE \
   -I$srcdir/arch/$ARCH -I$srcdir/arch/generic -I$srcdir/include \
@@ -714,7 +716,7 @@ if $CC $CFLAGS_C99FSE \
 printf "yes\n"
 else
 printf "no\n"
-fail "$0: error: unsupported long double type"
+fail "$0: error: unsupported double type"
 fi
 
 #

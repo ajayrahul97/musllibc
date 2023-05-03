@@ -10,14 +10,14 @@ TYPEDEF int wchar_t;
 #endif
 
 #if defined(__FLT_EVAL_METHOD__) && __FLT_EVAL_METHOD__ == 2
-TYPEDEF long double float_t;
-TYPEDEF long double double_t;
+TYPEDEF double float_t;
+TYPEDEF double double_t;
 #else
 TYPEDEF float float_t;
 TYPEDEF double double_t;
 #endif
 
-TYPEDEF struct { long long __ll; long double __ld; } max_align_t;
+TYPEDEF struct { long long __ll; double __ld; } max_align_t;
 
 TYPEDEF long time_t;
 TYPEDEF long suseconds_t;

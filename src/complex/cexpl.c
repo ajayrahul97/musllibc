@@ -1,7 +1,7 @@
 #include "libm.h"
 
 //FIXME
-long double complex cexpl(long double complex z)
+double complex cexpl(double complex z)
 {
 	return cexp(z);
 }

@@ -20,8 +20,8 @@
  *
  * SYNOPSIS:
  *
- * long double complex catanl();
- * long double complex z, w;
+ * double complex catanl();
+ * double complex z, w;
  *
  * w = catanl( z );
  *
@@ -62,19 +62,19 @@
 #include "libm.h"
 
 #if LDBL_MANT_DIG == 53 && LDBL_MAX_EXP == 1024
-long double complex catanl(long double complex z)
+double complex catanl(double complex z)
 {
 	return catan(z);
 }
 #else
-static const long double PIL = 3.141592653589793238462643383279502884197169L;
-static const long double DP1 = 3.14159265358979323829596852490908531763125L;
-static const long double DP2 = 1.6667485837041756656403424829301998703007e-19L;
-static const long double DP3 = 1.8830410776607851167459095484560349402753e-39L;
+static const double PIL = 3.141592653589793238462643383279502884197169L;
+static const double DP1 = 3.14159265358979323829596852490908531763125L;
+static const double DP2 = 1.6667485837041756656403424829301998703007e-19L;
+static const double DP3 = 1.8830410776607851167459095484560349402753e-39L;
 
-static long double redupil(long double x)
+static double redupil(double x)
 {
-	long double t;
+	double t;
 	long i;
 
 	t = x / PIL;
@@ -89,10 +89,10 @@ static long double redupil(long double x)
 	return t;
 }
 
-long double complex catanl(long double complex z)
+double complex catanl(double complex z)
 {
-	long double complex w;
-	long double a, t, x, x2, y;
+	double complex w;
+	double a, t, x, x2, y;
 
 	x = creall(z);
 	y = cimagl(z);

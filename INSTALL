@@ -70,7 +70,7 @@ and ABI combinations:
 
 * PowerPC
     * Only 32-bit is supported
-    * Compiler toolchain must provide 64-bit long double, not IBM
+    * Compiler toolchain must provide 64-bit double, not IBM
       double-double or IEEE quad
     * For dynamic linking, compiler toolchain must be configured for
       "secure PLT" variant

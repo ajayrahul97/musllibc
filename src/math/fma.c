@@ -3,9 +3,9 @@
 
 #if LDBL_MANT_DIG==64 && LDBL_MAX_EXP==16384
 /* exact add, assumes exponent_x >= exponent_y */
-static void add(long double *hi, long double *lo, long double x, long double y)
+static void add(double *hi, double *lo, double x, double y)
 {
-	long double r;
+	double r;
 
 	r = x + y;
 	*hi = r;
@@ -14,10 +14,10 @@ static void add(long double *hi, long double *lo, long double x, long double y)
 }
 
 /* exact mul, assumes no over/underflow */
-static void mul(long double *hi, long double *lo, long double x, long double y)
+static void mul(double *hi, double *lo, double x, double y)
 {
-	static const long double c = 1.0 + 0x1p32L;
-	long double cx, xh, xl, cy, yh, yl;
+	static const double c = 1.0 + 0x1p32L;
+	double cx, xh, xl, cy, yh, yl;
 
 	cx = c*x;
 	xh = (x - cx) + cx;
@@ -30,10 +30,10 @@ static void mul(long double *hi, long double *lo, long double x, long double y)
 }
 
 /*
-assume (long double)(hi+lo) == hi
+assume (double)(hi+lo) == hi
 return an adjusted hi so that rounding it to double (or less) precision is correct
 */
-static long double adjust(long double hi, long double lo)
+static double adjust(double hi, double lo)
 {
 	union ldshape uhi, ulo;
 
@@ -57,20 +57,20 @@ static long double adjust(long double hi, long double lo)
 }
 
 /* adjusted add so the result is correct when rounded to double (or less) precision */
-static long double dadd(long double x, long double y)
+static double dadd(double x, double y)
 {
 	add(&x, &y, x, y);
 	return adjust(x, y);
 }
 
 /* adjusted mul so the result is correct when rounded to double (or less) precision */
-static long double dmul(long double x, long double y)
+static double dmul(double x, double y)
 {
 	mul(&x, &y, x, y);
 	return adjust(x, y);
 }
 
-static int getexp(long double x)
+static int getexp(double x)
 {
 	union ldshape u;
 	u.f = x;
@@ -80,7 +80,7 @@ static int getexp(long double x)
 double fma(double x, double y, double z)
 {
 	#pragma STDC FENV_ACCESS ON
-	long double hi, lo1, lo2, xy;
+	double hi, lo1, lo2, xy;
 	int round, ez, exy;
 
 	/* handle +-inf,nan */
@@ -138,7 +138,7 @@ double fma(double x, double y, double z)
 
 	one corner case is when the underflow flag should be raised because
 	the precise result is an inexact subnormal double, but the calculated
-	long double result is an exact subnormal double
+	double result is an exact subnormal double
 	(so rounding to double does not raise exceptions)
 
 	in nearest rounding mode dadd takes care of this: the last bit of the
